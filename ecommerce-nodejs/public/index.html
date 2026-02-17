@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce API</title>
+</head>
+<body>
+    <h1>API Products</h1>
+    <div id="products"></div>
+    <script>
+        fetch('/products')
+            .then(response => response.json())
+            .then(products => {
+                const container = document.getElementById('products');
+                products.forEach(product => {
+                    container.innerHTML += `<div>${product.name} - $${product.price.toFixed(2)}</div>`;
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
